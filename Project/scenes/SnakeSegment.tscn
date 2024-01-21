@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bljwdsp3a25xx"]
+
+[ext_resource type="Script" path="res://scripts/SnakeSegment.gd" id="1_5rsfg"]
+[ext_resource type="Texture2D" uid="uid://867n1h44a7hi" path="res://art/spr_snake_segment.png" id="2_fg7r1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ch7p"]
+size = Vector2(4, 4)
+
+[node name="SnakeSegment" type="Area2D"]
+script = ExtResource("1_5rsfg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fg7r1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8ch7p")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpa2scx4uyu2g"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_wvwxf"]
+[ext_resource type="PackedScene" uid="uid://bljwdsp3a25xx" path="res://scenes/SnakeSegment.tscn" id="2_g6m7x"]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("snake_segments_node")]
+script = ExtResource("1_wvwxf")
+snake_segment_scene = ExtResource("2_g6m7x")
+snake_segments_node = NodePath("SnakeSegments")
+
+[node name="SnakeSegments" type="Node2D" parent="."]
