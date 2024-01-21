@@ -1,3 +1,30 @@
-[gd_scene format=3 uid="uid://mot4qbaqw5s8"]
+[gd_scene load_steps=5 format=3 uid="uid://mot4qbaqw5s8"]
 
-[node name="Level" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/Level.gd" id="1_ao5cn"]
+[ext_resource type="PackedScene" uid="uid://bpa2scx4uyu2g" path="res://scenes/Player.tscn" id="2_cgxcg"]
+[ext_resource type="PackedScene" uid="uid://2dw5571vbvvd" path="res://scenes/Food.tscn" id="2_nyvoh"]
+[ext_resource type="PackedScene" uid="uid://b66su586ebhn7" path="res://scenes/Obstacle.tscn" id="4_y3j4x"]
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("player_node")]
+script = ExtResource("1_ao5cn")
+player_node = NodePath("Player")
+food_scene = ExtResource("2_nyvoh")
+
+[node name="Player" parent="." instance=ExtResource("2_cgxcg")]
+position = Vector2(256, 143)
+
+[node name="Foods" type="Node" parent="."]
+
+[node name="Food" parent="Foods" instance=ExtResource("2_nyvoh")]
+position = Vector2(85, 79)
+
+[node name="Obstacles" type="Node" parent="."]
+
+[node name="Obstacle" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+position = Vector2(8, 8)
+
+[node name="Obstacle2" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+position = Vector2(8, 24)
+
+[node name="Obstacle3" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+position = Vector2(8, 40)

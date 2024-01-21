@@ -9,3 +9,20 @@ snake_segment_scene = ExtResource("2_g6m7x")
 snake_segments_node = NodePath("SnakeSegments")
 
 [node name="SnakeSegments" type="Node2D" parent="."]
+
+[node name="SnakeSegment" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
+
+[node name="SnakeSegment2" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
+position = Vector2(16, 0)
+
+[node name="SnakeSegment3" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
+position = Vector2(32, 0)
+
+[node name="SnakeSegment4" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
+position = Vector2(48, 0)
+
+[node name="SnakeSegment5" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
+position = Vector2(48, 16)
+
+[node name="SnakeSegment6" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
+position = Vector2(64, 16)

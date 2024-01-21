@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://867n1h44a7hi" path="res://art/spr_snake_segment.png" id="2_fg7r1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ch7p"]
-size = Vector2(4, 4)
+size = Vector2(10, 10)
 
 [node name="SnakeSegment" type="Area2D"]
+collision_mask = 7
 script = ExtResource("1_5rsfg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
