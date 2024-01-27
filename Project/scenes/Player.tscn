@@ -49,7 +49,7 @@ player = NodePath("../..")
 [node name="MovingMoveState" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("5_bi073")
 player = NodePath("../..")
-movement_interval = 0.5
+movement_interval = 0.1
 
 [node name="PausedMoveState" type="Node" parent="MoveStateMachine"]
 script = ExtResource("6_7dcsv")
