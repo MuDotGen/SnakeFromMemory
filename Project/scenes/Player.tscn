@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpa2scx4uyu2g"]
+[gd_scene load_steps=7 format=3 uid="uid://bpa2scx4uyu2g"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_wvwxf"]
 [ext_resource type="PackedScene" uid="uid://bljwdsp3a25xx" path="res://scenes/SnakeSegment.tscn" id="2_g6m7x"]
 [ext_resource type="Script" path="res://scripts/state/StateMachine.gd" id="3_b7si2"]
 [ext_resource type="Script" path="res://scripts/state/IdleMoveState.gd" id="4_oq18h"]
 [ext_resource type="Script" path="res://scripts/state/MovingMoveState.gd" id="5_bi073"]
+[ext_resource type="Script" path="res://scripts/state/PausedMoveState.gd" id="6_7dcsv"]
 
 [node name="Player" type="Node2D" node_paths=PackedStringArray("snake_segments_node")]
 script = ExtResource("1_wvwxf")
@@ -41,8 +42,13 @@ position = Vector2(64, 16)
 script = ExtResource("3_b7si2")
 current_state = NodePath("IdleMoveState")
 
-[node name="IdleMoveState" type="Node" parent="MoveStateMachine"]
+[node name="IdleMoveState" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("4_oq18h")
+player = NodePath("../..")
 
-[node name="MovingMoveState" type="Node" parent="MoveStateMachine"]
+[node name="MovingMoveState" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("5_bi073")
+player = NodePath("../..")
+
+[node name="PausedMoveState" type="Node" parent="MoveStateMachine"]
+script = ExtResource("6_7dcsv")

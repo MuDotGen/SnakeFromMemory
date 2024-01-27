@@ -3,29 +3,36 @@ extends State
 
 @export var player: Player
 
+var input_times: int = 0
+
 func Enter():
-	
+	print("Transitioned to Moving State")
+	_move(player.current_direction)
 	pass
 
-func Handle_input(event: InputEvent):
-	var player_direction: Vector2 = GridUtility.DIRECTIONS.DOWN
-	
+func Handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up"):
 		# Move up
-		player_direction = GridUtility.DIRECTIONS.UP
+		_move(GridUtility.DIRECTIONS.UP)
 	elif event.is_action_pressed("ui_down"):
 		# Move down
-		player_direction = GridUtility.DIRECTIONS.DOWN
+		_move(GridUtility.DIRECTIONS.DOWN)
 	elif event.is_action_pressed("ui_left"):
 		# Move left
-		player_direction = GridUtility.DIRECTIONS.LEFT
+		_move(GridUtility.DIRECTIONS.LEFT)
 	elif event.is_action_pressed("ui_right"):
 		# Move right
-		player_direction = GridUtility.DIRECTIONS.RIGHT
-	
-	transitioned.emit("MovingMoveState")
+		_move(GridUtility.DIRECTIONS.RIGHT)
+		
+func Exit():
+	print("Exiting MovingMoveState")
+	input_times = 0
 
-#func _move():
-	#var current_grid_position = GridUtility.
-	#var new_position = GridUtility.
-	#player.position += 
+func _move(direction: Vector2):
+	player.current_direction = direction
+	var new_position: Vector2 = player.grid_position + player.current_direction
+	player.grid_position = new_position
+	
+	input_times += 1
+	if input_times > 5:
+		transitioned.emit("PausedMoveState")
