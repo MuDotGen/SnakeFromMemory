@@ -1,6 +1,5 @@
-extends Node
-
 class_name GameManager
+extends Node
 
 var level_number: int = 1
 

@@ -1,6 +1,5 @@
-extends Node
-
 class_name GridUtility
+extends Node
 
 const USE_TILE_CENTERS = true # If true, the world position will be in the center of the tiles
 
@@ -10,6 +9,7 @@ const TILE_SIZE = 16
 const TILE_OFFSET: int = TILE_SIZE / 2 if USE_TILE_CENTERS else 0
 const NUM_COLUMNS: int = WORLD_WIDTH / TILE_SIZE
 const NUM_ROWS: int = WORLD_HEIGHT / TILE_SIZE
+const DIRECTIONS: Dictionary = { "UP": Vector2(0, -1), "DOWN": Vector2(0, 1), "LEFT": Vector2(-1, 0), "RIGHT": Vector2(1, 0) }
 
 # Given a grid position as a Vector2, return the equivalent world position
 static func grid_to_world(position: Vector2) -> Vector2:

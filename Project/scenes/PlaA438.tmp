@@ -10,7 +10,6 @@
 script = ExtResource("1_wvwxf")
 snake_segment_scene = ExtResource("2_g6m7x")
 snake_segments_node = NodePath("SnakeSegments")
-grid_position = Vector2(2, 0)
 
 [node name="SnakeSegments" type="Node2D" parent="."]
 

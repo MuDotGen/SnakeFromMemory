@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://2dw5571vbvvd"]
 
 [ext_resource type="Texture2D" uid="uid://cll4x2asit1sc" path="res://art/spr_fruit.png" id="1_55e6l"]
-[ext_resource type="Script" path="res://scripts/Fruit.gd" id="1_vyosg"]
+[ext_resource type="Script" path="res://scripts/Food.gd" id="1_s6nb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j37r1"]
 size = Vector2(10, 10)
 
 [node name="Food" type="Area2D"]
 collision_layer = 4
-script = ExtResource("1_vyosg")
+script = ExtResource("1_s6nb4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_55e6l")
