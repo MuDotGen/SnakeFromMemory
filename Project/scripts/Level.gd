@@ -1,7 +1,7 @@
 class_name Level
 extends Node2D
 
-@export var player_node: GridNode = null  # Initialize player_node to null
+@export var player_node: Node = null  # Initialize player_node to null
 
 @export var food_scene: PackedScene = null
 @export var foods_node: Node = null
@@ -15,9 +15,7 @@ func reset_level():
 	# Reset the player
 	print("Resetting Level")
 	if player_node:
-		var player_starting_position = Vector2(GridUtility.NUM_COLUMNS / 2, GridUtility.NUM_ROWS / 2)
-		print(player_starting_position)
-		player_node.grid_position = player_starting_position
+		player_node.reset()
 	#if foods_node and foods_node.is_inside_tree():
 		#player_node.queue_free()
 		#player_node = null  # Set player_node to null after freeing it

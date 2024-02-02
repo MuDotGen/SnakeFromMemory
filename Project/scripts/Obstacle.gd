@@ -1,0 +1,2 @@
+class_name Obstacle
+extends GridArea2D

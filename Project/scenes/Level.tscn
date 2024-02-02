@@ -11,12 +11,20 @@ player_node = NodePath("Player")
 food_scene = ExtResource("2_nyvoh")
 
 [node name="Player" parent="." instance=ExtResource("2_cgxcg")]
-grid_position = Vector2(0, 0)
 
 [node name="Foods" type="Node" parent="."]
 
 [node name="Food" parent="Foods" instance=ExtResource("2_nyvoh")]
-position = Vector2(120, 88)
+grid_position = Vector2(10, 8)
+
+[node name="Food2" parent="Foods" instance=ExtResource("2_nyvoh")]
+grid_position = Vector2(7, 10)
+
+[node name="Food3" parent="Foods" instance=ExtResource("2_nyvoh")]
+grid_position = Vector2(13, 10)
+
+[node name="Food4" parent="Foods" instance=ExtResource("2_nyvoh")]
+grid_position = Vector2(14, 10)
 
 [node name="Obstacles" type="Node" parent="."]
 

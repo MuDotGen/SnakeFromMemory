@@ -11,7 +11,9 @@
 script = ExtResource("1_wvwxf")
 snake_segment_scene = ExtResource("2_g6m7x")
 snake_segments_node = NodePath("SnakeSegments")
+current_direction = null
 move_state_machine = NodePath("MoveStateMachine")
+grid_position = Vector2(2, 0)
 
 [node name="SnakeSegments" type="Node2D" parent="."]
 
@@ -26,7 +28,7 @@ player = NodePath("../..")
 [node name="MovingMoveState" type="Node" parent="MoveStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("5_bi073")
 player = NodePath("../..")
-movement_interval = 0.5
+movement_interval = 0.1
 
 [node name="PausedMoveState" type="Node" parent="MoveStateMachine"]
 script = ExtResource("6_7dcsv")

@@ -1,3 +1,3 @@
 class_name Food
-extends Area2D
+extends GridArea2D
 

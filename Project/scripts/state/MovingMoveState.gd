@@ -2,11 +2,13 @@ class_name MovingMoveState
 extends State
 
 @export var player: Player
+var snake: SnakeSegment
 @export var movement_interval: float = 1 # In seconds
 
 var movement_clock: Timer
 
 func _ready():
+	snake = player.head_snake_segment
 	movement_clock = Timer.new()
 	add_child(movement_clock)
 	movement_clock.one_shot = true
@@ -42,11 +44,11 @@ func _change_direction(direction: Vector2):
 	transitioned.emit("MovingMoveState")
 
 func _move():
-	var new_position: Vector2 = player.grid_position + player.current_direction
+	var new_position: Vector2 = player.get_snake_grid_position() + player.current_direction
 	# Check the new position is within a valid grid position
 	new_position.x = clamp(new_position.x, 0, GridUtility.NUM_COLUMNS - 1)
 	new_position.y = clamp(new_position.y, 0, GridUtility.NUM_ROWS - 1)
-	player.grid_position = new_position
+	player.move(new_position)
 	
 func _tick_movement_clock():
 	movement_clock.stop()
