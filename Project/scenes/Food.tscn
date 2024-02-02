@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j37r1"]
 size = Vector2(10, 10)
 
-[node name="Food" type="Area2D"]
+[node name="Food" type="Area2D" groups=["foods"]]
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_s6nb4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

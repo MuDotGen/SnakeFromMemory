@@ -7,36 +7,14 @@
 [ext_resource type="Script" path="res://scripts/state/MovingMoveState.gd" id="5_bi073"]
 [ext_resource type="Script" path="res://scripts/state/PausedMoveState.gd" id="6_7dcsv"]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("snake_segments_node")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("snake_segments_node", "move_state_machine")]
 script = ExtResource("1_wvwxf")
 snake_segment_scene = ExtResource("2_g6m7x")
 snake_segments_node = NodePath("SnakeSegments")
+move_state_machine = NodePath("MoveStateMachine")
 grid_position = Vector2(2, 0)
 
 [node name="SnakeSegments" type="Node2D" parent="."]
-
-[node name="SnakeSegment" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
-visible = false
-
-[node name="SnakeSegment2" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
-visible = false
-position = Vector2(16, 0)
-
-[node name="SnakeSegment3" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
-visible = false
-position = Vector2(32, 0)
-
-[node name="SnakeSegment4" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
-visible = false
-position = Vector2(48, 0)
-
-[node name="SnakeSegment5" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
-visible = false
-position = Vector2(48, 16)
-
-[node name="SnakeSegment6" parent="SnakeSegments" instance=ExtResource("2_g6m7x")]
-visible = false
-position = Vector2(64, 16)
 
 [node name="MoveStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_b7si2")

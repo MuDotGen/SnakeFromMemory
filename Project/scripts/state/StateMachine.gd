@@ -28,7 +28,7 @@ func _physics_process(delta): # Can check input as well as physics at a constant
 	current_state.Physics_update(delta)
 
 # Using StringName here is much faster for comparing and grabbing the correct state in a Dictionary
-func on_child_transitioned(new_state_name: StringName) -> void:
+func on_child_transitioned(new_state_name: StringName):
 	var new_state = states.get(new_state_name)
 	if new_state != null:
 		if new_state != current_state:

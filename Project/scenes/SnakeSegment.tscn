@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ch7p"]
 size = Vector2(10, 10)
 
-[node name="SnakeSegment" type="Area2D"]
+[node name="SnakeSegment" type="Area2D" groups=["snakeSegments"]]
 collision_mask = 7
 script = ExtResource("1_5rsfg")
 
