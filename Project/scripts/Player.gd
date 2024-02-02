@@ -1,6 +1,9 @@
 class_name Player
 extends Node
 
+# Signals
+signal food_eaten
+
 # Snake Segments
 @export var snake_segment_scene: PackedScene
 @export var snake_segments_node: Node2D
@@ -74,7 +77,9 @@ func _on_snake_segment_collision(area: Area2D):
 		_change_move_state("PausedMoveState")
 	elif area.is_in_group("foods"):
 		print("Hit a Food: " + area.name)
+		movement_interval /= speedup_factor
 		area.queue_free()
 		_add_snake_segment()
+		food_eaten.emit()
 	else:
 		print("Hit something: " + area.name)

@@ -51,7 +51,7 @@ func _move():
 	
 func _tick_movement_clock():
 	movement_clock.stop()
-	movement_clock.wait_time = player.movement_interval / player.speedup_factor
+	movement_clock.wait_time = player.movement_interval
 	movement_clock.start()
 	
 func _on_movement_tick_timeout():
