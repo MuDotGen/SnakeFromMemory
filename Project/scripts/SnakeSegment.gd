@@ -21,7 +21,8 @@ func add_segment(new_segment: SnakeSegment):
 		tail_segment.add_segment(new_segment)
 	else:
 		# If it has no tail, it's the last segment, so add the new segment
-		print("Adding to tail at position: " + str(last_grid_position))
+		if last_grid_position == Vector2(0,0):
+			pass
 		new_segment.initialize_segment(last_grid_position, last_direction)
 		tail_segment = new_segment
 

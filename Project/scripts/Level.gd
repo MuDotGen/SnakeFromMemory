@@ -14,7 +14,14 @@ extends Node2D
 const X_OPEN_RANGE: Vector2 = Vector2(1, GridUtility.NUM_COLUMNS - 2)
 const Y_OPEN_RANGE: Vector2 = Vector2(1, GridUtility.NUM_ROWS - 3)
 
+var food_spawn_timer: Timer
+
 func _ready():
+	food_spawn_timer = Timer.new()
+	add_child(food_spawn_timer)
+	food_spawn_timer.one_shot = true
+	food_spawn_timer.autostart = false
+	
 	reset_level()
 	if not foods_node:
 		foods_node = $Foods as Node2D  # Fallback if not set in the editor
@@ -30,7 +37,7 @@ func reset_level():
 		player_node.food_eaten.connect(_on_food_eaten)
 
 	if foods_node:
-		_instantiate_food(_get_random_position())
+		_spawn_food_random_position()
 
 func _setup_boundary():
 	# Nested for loop to instantiating obstacles in rectangle border
@@ -62,6 +69,11 @@ func _instantiate_food(food_grid_position: Vector2):
 		food_instance.grid_position = food_grid_position
 	else:
 		push_error("Food scene or foods node is not set in Level scene.")
+
+func _spawn_food_random_position():
+	_instantiate_food(_get_random_position())
 		
 func _on_food_eaten():
-	_instantiate_food(_get_random_position())
+	food_spawn_timer.wait_time = 1
+	food_spawn_timer.timeout.connect(_spawn_food_random_position)
+	food_spawn_timer.start()

@@ -11,6 +11,8 @@
 script = ExtResource("1_wvwxf")
 snake_segment_scene = ExtResource("2_g6m7x")
 snake_segments_node = NodePath("SnakeSegments")
+movement_interval = 0.3
+speedup_factor = 1.05
 move_state_machine = NodePath("MoveStateMachine")
 
 [node name="SnakeSegments" type="Node2D" parent="."]

@@ -69,7 +69,7 @@ func _on_snake_segment_collision(area: Area2D):
 	# Let a manager know hit something and what it is
 	if area.is_in_group("snakeSegments"):
 		print("Hit Snake Segment: " + area.name)
-		area.queue_free()
+		#area.queue_free()
 		_change_move_state("PausedMoveState")
 	elif area.is_in_group("obstacles"):
 		print("Hit an Obstacle: " + area.name)
