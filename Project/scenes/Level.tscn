@@ -5,310 +5,398 @@
 [ext_resource type="PackedScene" uid="uid://2dw5571vbvvd" path="res://scenes/Food.tscn" id="2_nyvoh"]
 [ext_resource type="PackedScene" uid="uid://b66su586ebhn7" path="res://scenes/Obstacle.tscn" id="4_y3j4x"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("player_node")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("player_node", "obstacles_node", "foods_node")]
 script = ExtResource("1_ao5cn")
 player_node = NodePath("Player")
+obstacle_scene = ExtResource("4_y3j4x")
+obstacles_node = NodePath("Obstacles")
 food_scene = ExtResource("2_nyvoh")
+foods_node = NodePath("Foods")
 
 [node name="Player" parent="." instance=ExtResource("2_cgxcg")]
 
 [node name="Foods" type="Node" parent="."]
 
-[node name="Food" parent="Foods" instance=ExtResource("2_nyvoh")]
-grid_position = Vector2(10, 8)
-
-[node name="Food2" parent="Foods" instance=ExtResource("2_nyvoh")]
-grid_position = Vector2(7, 10)
-
-[node name="Food3" parent="Foods" instance=ExtResource("2_nyvoh")]
-grid_position = Vector2(13, 10)
-
-[node name="Food4" parent="Foods" instance=ExtResource("2_nyvoh")]
-grid_position = Vector2(14, 10)
-
 [node name="Obstacles" type="Node" parent="."]
 
-[node name="Obstacle" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacles_Preset" type="Node" parent="."]
+
+[node name="Obstacle" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 8)
 
-[node name="Obstacle2" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle2" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 24)
 
-[node name="Obstacle3" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle3" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 40)
 
-[node name="Obstacle4" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle4" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 56)
 
-[node name="Obstacle5" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle5" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 72)
 
-[node name="Obstacle6" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle6" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 88)
 
-[node name="Obstacle7" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle7" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 104)
 
-[node name="Obstacle8" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle8" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 120)
 
-[node name="Obstacle9" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle9" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 136)
 
-[node name="Obstacle10" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle10" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 152)
 
-[node name="Obstacle11" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle11" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 168)
 
-[node name="Obstacle12" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle12" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 184)
 
-[node name="Obstacle13" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle13" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 200)
 
-[node name="Obstacle14" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle14" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 216)
 
-[node name="Obstacle15" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle15" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 232)
 
-[node name="Obstacle16" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle16" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 248)
 
-[node name="Obstacle17" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle17" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(8, 264)
 
-[node name="Obstacle18" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle18" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(24, 264)
 
-[node name="Obstacle19" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle19" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(40, 264)
 
-[node name="Obstacle20" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle20" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(56, 264)
 
-[node name="Obstacle21" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle21" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(72, 264)
 
-[node name="Obstacle22" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle22" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(88, 264)
 
-[node name="Obstacle23" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle23" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(104, 264)
 
-[node name="Obstacle24" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle24" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(120, 264)
 
-[node name="Obstacle25" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle25" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(136, 264)
 
-[node name="Obstacle26" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle26" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(152, 264)
 
-[node name="Obstacle27" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle27" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(168, 264)
 
-[node name="Obstacle28" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle28" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(184, 264)
 
-[node name="Obstacle29" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle29" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(200, 264)
 
-[node name="Obstacle30" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle30" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(216, 264)
 
-[node name="Obstacle31" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle31" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(232, 264)
 
-[node name="Obstacle32" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle32" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(248, 264)
 
-[node name="Obstacle33" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle33" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(264, 264)
 
-[node name="Obstacle34" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle34" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(280, 264)
 
-[node name="Obstacle35" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle35" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(296, 264)
 
-[node name="Obstacle36" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle36" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(312, 264)
 
-[node name="Obstacle37" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle37" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(328, 264)
 
-[node name="Obstacle38" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle38" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(344, 264)
 
-[node name="Obstacle39" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle39" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(360, 264)
 
-[node name="Obstacle40" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle40" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(376, 264)
 
-[node name="Obstacle41" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle41" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(392, 264)
 
-[node name="Obstacle42" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle42" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(408, 264)
 
-[node name="Obstacle43" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle43" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(424, 264)
 
-[node name="Obstacle44" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle44" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(440, 264)
 
-[node name="Obstacle45" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle45" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(456, 264)
 
-[node name="Obstacle46" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle46" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(472, 264)
 
-[node name="Obstacle47" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle47" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(488, 264)
 
-[node name="Obstacle48" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle48" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 264)
 
-[node name="Obstacle49" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle49" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 248)
 
-[node name="Obstacle50" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle50" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 232)
 
-[node name="Obstacle51" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle51" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 216)
 
-[node name="Obstacle52" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle52" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 200)
 
-[node name="Obstacle53" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle53" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 184)
 
-[node name="Obstacle54" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle54" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 168)
 
-[node name="Obstacle55" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle55" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 152)
 
-[node name="Obstacle56" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle56" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 136)
 
-[node name="Obstacle57" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle57" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 120)
 
-[node name="Obstacle58" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle58" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 104)
 
-[node name="Obstacle59" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle59" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 88)
 
-[node name="Obstacle60" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle60" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 72)
 
-[node name="Obstacle61" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle61" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 56)
 
-[node name="Obstacle62" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle62" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 40)
 
-[node name="Obstacle63" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle63" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 24)
 
-[node name="Obstacle64" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle64" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(504, 8)
 
-[node name="Obstacle65" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle65" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(488, 8)
 
-[node name="Obstacle66" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle66" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(472, 8)
 
-[node name="Obstacle67" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle67" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(456, 8)
 
-[node name="Obstacle68" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle68" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(440, 8)
 
-[node name="Obstacle69" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle69" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(424, 8)
 
-[node name="Obstacle70" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle70" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(408, 8)
 
-[node name="Obstacle71" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle71" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(392, 8)
 
-[node name="Obstacle72" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle72" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(376, 8)
 
-[node name="Obstacle73" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle73" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(360, 8)
 
-[node name="Obstacle74" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle74" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(344, 8)
 
-[node name="Obstacle75" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle75" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(328, 8)
 
-[node name="Obstacle76" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle76" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(312, 8)
 
-[node name="Obstacle77" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle77" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(296, 8)
 
-[node name="Obstacle78" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle78" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(280, 8)
 
-[node name="Obstacle79" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle79" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(264, 8)
 
-[node name="Obstacle80" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle80" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(248, 8)
 
-[node name="Obstacle81" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle81" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(232, 8)
 
-[node name="Obstacle82" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle82" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(216, 8)
 
-[node name="Obstacle83" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle83" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(200, 8)
 
-[node name="Obstacle84" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle84" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(184, 8)
 
-[node name="Obstacle85" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle85" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(168, 8)
 
-[node name="Obstacle86" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle86" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(152, 8)
 
-[node name="Obstacle87" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle87" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(136, 8)
 
-[node name="Obstacle88" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle88" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(120, 8)
 
-[node name="Obstacle89" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle89" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(104, 8)
 
-[node name="Obstacle90" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle90" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(104, 8)
 
-[node name="Obstacle91" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle91" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(88, 8)
 
-[node name="Obstacle92" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle92" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(72, 8)
 
-[node name="Obstacle93" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle93" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(56, 8)
 
-[node name="Obstacle94" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle94" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(40, 8)
 
-[node name="Obstacle95" parent="Obstacles" instance=ExtResource("4_y3j4x")]
+[node name="Obstacle95" parent="Obstacles_Preset" instance=ExtResource("4_y3j4x")]
+visible = false
 position = Vector2(24, 8)

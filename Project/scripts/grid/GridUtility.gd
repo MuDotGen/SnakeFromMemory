@@ -3,9 +3,9 @@ extends Node
 
 const USE_TILE_CENTERS = true # If true, the world position will be in the center of the tiles
 
-const WORLD_WIDTH = 512
-const WORLD_HEIGHT = 288
-const TILE_SIZE = 16
+const WORLD_WIDTH: int = 512
+const WORLD_HEIGHT: int = 288
+const TILE_SIZE: int = 16
 const TILE_OFFSET: int = TILE_SIZE / 2 if USE_TILE_CENTERS else 0
 const NUM_COLUMNS: int = WORLD_WIDTH / TILE_SIZE
 const NUM_ROWS: int = WORLD_HEIGHT / TILE_SIZE
@@ -13,7 +13,7 @@ const DIRECTIONS: Dictionary = { "UP": Vector2(0, -1), "DOWN": Vector2(0, 1), "L
 
 # Given a grid position as a Vector2, return the equivalent world position
 static func grid_to_world(position: Vector2) -> Vector2:
-	if position:
+	if position != null:
 		var world_position_x: int = clamp(position.x * TILE_SIZE + TILE_OFFSET, 0, WORLD_WIDTH - 1)
 		var world_position_y: int = clamp(position.y * TILE_SIZE + TILE_OFFSET, 0, WORLD_HEIGHT - 1)
 		return Vector2(world_position_x, world_position_y)

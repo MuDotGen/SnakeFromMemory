@@ -9,6 +9,10 @@ var head_snake_segment: SnakeSegment
 # Player Direction
 @export var current_direction: Vector2 = GridUtility.DIRECTIONS.DOWN
 
+# Player Speedup Factor
+@export var movement_interval: float = 0.5 # In seconds
+@export var speedup_factor: float = 1.1 # Factor 1 means no speedup, 1.1 is 10% speed up per food
+
 # Player MoveStateMachine
 @export var move_state_machine: Node
 	
@@ -60,15 +64,16 @@ func _add_snake_segment() -> SnakeSegment:
 
 func _on_snake_segment_collision(area: Area2D):
 	# Let a manager know hit something and what it is
-	if area.is_in_group("snakeSegment"):
+	if area.is_in_group("snakeSegments"):
 		print("Hit Snake Segment: " + area.name)
+		area.queue_free()
 		_change_move_state("PausedMoveState")
 	elif area.is_in_group("obstacles"):
 		print("Hit an Obstacle: " + area.name)
 		area.queue_free()
-		#_change_move_state("PausedMoveState")
+		_change_move_state("PausedMoveState")
 	elif area.is_in_group("foods"):
-		print("Hit a Food")
+		print("Hit a Food: " + area.name)
 		area.queue_free()
 		_add_snake_segment()
 	else:

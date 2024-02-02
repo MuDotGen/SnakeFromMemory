@@ -3,7 +3,6 @@ extends State
 
 @export var player: Player
 var snake: SnakeSegment
-@export var movement_interval: float = 1 # In seconds
 
 var movement_clock: Timer
 
@@ -52,7 +51,7 @@ func _move():
 	
 func _tick_movement_clock():
 	movement_clock.stop()
-	movement_clock.wait_time = movement_interval
+	movement_clock.wait_time = player.movement_interval / player.speedup_factor
 	movement_clock.start()
 	
 func _on_movement_tick_timeout():
