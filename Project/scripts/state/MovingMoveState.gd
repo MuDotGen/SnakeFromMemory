@@ -43,6 +43,9 @@ func _change_direction(direction: Vector2):
 
 func _move():
 	var new_position: Vector2 = player.grid_position + player.current_direction
+	# Check the new position is within a valid grid position
+	new_position.x = clamp(new_position.x, 0, GridUtility.NUM_COLUMNS - 1)
+	new_position.y = clamp(new_position.y, 0, GridUtility.NUM_ROWS - 1)
 	player.grid_position = new_position
 	
 func _tick_movement_clock():
