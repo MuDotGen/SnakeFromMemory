@@ -7,6 +7,7 @@
 size = Vector2(10, 10)
 
 [node name="Obstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 2
 script = ExtResource("1_sfsy2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

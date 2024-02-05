@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bmr55ic70xgyr"]
+
+[ext_resource type="Texture2D" uid="uid://exm54krbehys" path="res://art/tilesets/background_tileset.png" id="3_dvuiv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fksr2"]
+resource_name = "background"
+texture = ExtResource("3_dvuiv")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[resource]
+sources/6 = SubResource("TileSetAtlasSource_fksr2")
+tile_proxies/coords_level = [[3, Vector2i(0, 0)], [5, Vector2i(0, 0)], [4, Vector2i(0, 0)], [5, Vector2i(1, 0)]]
