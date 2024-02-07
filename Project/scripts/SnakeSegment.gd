@@ -3,14 +3,14 @@ extends GridArea2D
 
 
 var tail_segment: SnakeSegment
-var last_grid_position: Vector2
-var current_direction: Vector2
-var last_direction: Vector2
+var last_grid_position: Vector2i
+var current_direction: Vector2i
+var last_direction: Vector2i
 
 func _ready():
 	print("New Snake Segment Initialized")
 
-func initialize_segment(pos: Vector2, dir: Vector2):
+func initialize_segment(pos: Vector2i, dir: Vector2i):
 	grid_position = pos
 	current_direction = dir
 
@@ -21,12 +21,12 @@ func add_segment(new_segment: SnakeSegment):
 		tail_segment.add_segment(new_segment)
 	else:
 		# If it has no tail, it's the last segment, so add the new segment
-		if last_grid_position == Vector2(0,0):
+		if last_grid_position == Vector2i(0,0):
 			pass
 		new_segment.initialize_segment(last_grid_position, last_direction)
 		tail_segment = new_segment
 
-func move(new_grid_position: Vector2, new_direction: Vector2):
+func move(new_grid_position: Vector2i, new_direction: Vector2i):
 	# Recursively move each tail to the position of the segment in front of it
 	
 	# Store the current_grid_position as the last one before updating position

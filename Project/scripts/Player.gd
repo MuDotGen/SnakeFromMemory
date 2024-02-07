@@ -10,7 +10,7 @@ signal food_eaten
 var head_snake_segment: SnakeSegment
 
 # Player Direction
-@export var current_direction: Vector2 = GridUtility.DIRECTIONS.DOWN
+@export var current_direction: Vector2i = GridUtility.DIRECTIONS.DOWN
 
 # Player Speedup Factor
 @export var movement_interval: float = 0.5 # In seconds
@@ -19,21 +19,21 @@ var head_snake_segment: SnakeSegment
 # Player MoveStateMachine
 @export var move_state_machine: Node
 	
-func move(new_position: Vector2):
+func move(new_position: Vector2i):
 	head_snake_segment.move(new_position, current_direction)
 	
-func get_snake_grid_position() -> Vector2:
+func get_snake_grid_position() -> Vector2i:
 	if head_snake_segment:
 		return head_snake_segment.grid_position
 	else:
 		push_error("head_snake_segment not ready in the Player scene")
-		return Vector2.ZERO
+		return Vector2i.ZERO
 
 func reset():
 	print("Calling Reset")
 	if snake_segment_scene:
 		head_snake_segment = _add_snake_segment() # Keep a reference to the first segment added
-		var player_starting_position = Vector2(GridUtility.NUM_COLUMNS / 2, GridUtility.NUM_ROWS / 2)
+		var player_starting_position = Vector2i(int(float(GridUtility.NUM_COLUMNS) / 2), int(float(GridUtility.NUM_ROWS) / 2))
 		print(player_starting_position)
 		head_snake_segment.initialize_segment(player_starting_position, GridUtility.DIRECTIONS.DOWN)
 	else:
@@ -49,7 +49,7 @@ func _change_move_state(state_name: StringName):
 
 func _add_snake_segment() -> SnakeSegment:
 	# Create a new Snake Segment
-	var new_segment = snake_segment_scene.instantiate()
+	var new_segment: SnakeSegment = snake_segment_scene.instantiate()
 	snake_segments_node.add_child(new_segment) # Add the new instance to the tree
 	
 	if head_snake_segment:
@@ -79,7 +79,7 @@ func _on_snake_segment_collision(area: Area2D):
 		print("Hit a Food: " + area.name)
 		movement_interval /= speedup_factor
 		area.queue_free()
-		_add_snake_segment()
-		food_eaten.emit()
+		(func(): _add_snake_segment()).call_deferred()
+		(func(): food_eaten.emit()).call_deferred()
 	else:
 		print("Hit something: " + area.name)

@@ -23,6 +23,6 @@ func Handle_input(event: InputEvent) -> void:
 		# Move right
 		_change_direction(GridUtility.DIRECTIONS.RIGHT)
 	
-func _change_direction(direction: Vector2):
+func _change_direction(direction: Vector2i):
 	player.current_direction = direction
 	transitioned.emit("MovingMoveState")

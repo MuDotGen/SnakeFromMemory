@@ -38,12 +38,12 @@ func Handle_input(event: InputEvent) -> void:
 		# Move right
 		_change_direction(GridUtility.DIRECTIONS.RIGHT)
 
-func _change_direction(direction: Vector2):
+func _change_direction(direction: Vector2i):
 	player.current_direction = direction
 	transitioned.emit("MovingMoveState")
 
 func _move():
-	var new_position: Vector2 = player.get_snake_grid_position() + player.current_direction
+	var new_position: Vector2i = player.get_snake_grid_position() + player.current_direction
 	# Check the new position is within a valid grid position
 	new_position.x = clamp(new_position.x, 0, GridUtility.NUM_COLUMNS - 1)
 	new_position.y = clamp(new_position.y, 0, GridUtility.NUM_ROWS - 1)

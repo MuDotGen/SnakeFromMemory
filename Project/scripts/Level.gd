@@ -11,8 +11,8 @@ extends Node2D
 @export var food_scene: PackedScene = null
 @export var foods_node: Node = null
 
-const X_OPEN_RANGE: Vector2 = Vector2(1, GridUtility.NUM_COLUMNS - 2)
-const Y_OPEN_RANGE: Vector2 = Vector2(1, GridUtility.NUM_ROWS - 3)
+const X_OPEN_RANGE: Vector2i = Vector2i(1, GridUtility.NUM_COLUMNS - 2)
+const Y_OPEN_RANGE: Vector2i = Vector2i(1, GridUtility.NUM_ROWS - 3)
 
 var food_spawn_timer: Timer
 
@@ -25,6 +25,10 @@ func _ready():
 	reset_level()
 	if not foods_node:
 		foods_node = $Foods as Node2D  # Fallback if not set in the editor
+	if not obstacles_node:
+		obstacles_node = $Obstacles as Node2D  # Fallback if not set in the editor
+	if not player_node:
+		player_node = $Player as Node2D  # Fallback if not set in the editor
 
 func reset_level():
 	# Reset the player
@@ -42,14 +46,14 @@ func reset_level():
 func _setup_boundary():
 	# Nested for loop to instantiating obstacles in rectangle border
 	for x in range(0, GridUtility.NUM_COLUMNS):
-		_instantiate_obstacle(Vector2(x, 0))  # Top boundary
-		_instantiate_obstacle(Vector2(x, GridUtility.NUM_ROWS - 2))  # Bottom boundary
+		_instantiate_obstacle(Vector2i(x, 0))  # Top boundary
+		_instantiate_obstacle(Vector2i(x, GridUtility.NUM_ROWS - 2))  # Bottom boundary
 	
 	for y in range(1, GridUtility.NUM_ROWS - 2):
-		_instantiate_obstacle(Vector2(0, y))  # Left boundary
-		_instantiate_obstacle(Vector2(GridUtility.NUM_COLUMNS - 1, y))  # Right boundary
+		_instantiate_obstacle(Vector2i(0, y))  # Left boundary
+		_instantiate_obstacle(Vector2i(GridUtility.NUM_COLUMNS - 1, y))  # Right boundary
 	
-func _instantiate_obstacle(obstacle_grid_position: Vector2):
+func _instantiate_obstacle(obstacle_grid_position: Vector2i):
 	if obstacle_scene and obstacles_node:
 		var obstacle_instance: Obstacle = obstacle_scene.instantiate()
 		obstacles_node.add_child(obstacle_instance)
@@ -57,12 +61,12 @@ func _instantiate_obstacle(obstacle_grid_position: Vector2):
 	else:
 		push_error("Obstacle scene or obstacles node is not set in Level scene.")
 
-func _get_random_position() -> Vector2:
+func _get_random_position() -> Vector2i:
 	var x: int = randi_range(X_OPEN_RANGE.x, X_OPEN_RANGE.y)
 	var y: int = randi_range(Y_OPEN_RANGE.x, Y_OPEN_RANGE.y)
-	return Vector2(x, y)
+	return Vector2i(x, y)
 
-func _instantiate_food(food_grid_position: Vector2):
+func _instantiate_food(food_grid_position: Vector2i):
 	if food_scene and foods_node:
 		var food_instance: Food = food_scene.instantiate()
 		foods_node.add_child(food_instance)
@@ -75,5 +79,7 @@ func _spawn_food_random_position():
 		
 func _on_food_eaten():
 	food_spawn_timer.wait_time = 1
-	food_spawn_timer.timeout.connect(_spawn_food_random_position)
+	#food_spawn_timer.timeout.connect(_spawn_food_random_position)
 	food_spawn_timer.start()
+	await food_spawn_timer.timeout
+	_spawn_food_random_position()

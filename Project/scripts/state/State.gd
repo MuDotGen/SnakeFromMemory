@@ -9,11 +9,11 @@ func Enter() -> void:
 func Exit() -> void:
 	pass
 
-func Handle_input(event: InputEvent) -> void:
+func Handle_input(_event: InputEvent) -> void:
 	pass
 	
-func Update(delta: float) -> void:
+func Update(_delta: float) -> void:
 	pass
- 
-func Physics_update(delta: float) -> void:
+
+func Physics_update(_delta: float) -> void:
 	pass
