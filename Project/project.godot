@@ -15,6 +15,10 @@ run/main_scene="res://scenes/World.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicPlayer="*res://scenes/MusicPlayer.tscn"
+
 [debug]
 
 gdscript/warnings/unused_variable=2

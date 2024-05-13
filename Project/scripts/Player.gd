@@ -18,6 +18,16 @@ var head_snake_segment: SnakeSegment
 
 # Player MoveStateMachine
 @export var move_state_machine: Node
+
+# Player SFX
+@export var eat_sfx: AudioStreamPlayer # Sound effect for eating food
+@export var hit_sfx: AudioStreamPlayer # Sound effect for hitting an obstacle
+
+func _ready() -> void:
+	if not eat_sfx:
+		eat_sfx = $EatSFXPlayer as AudioStreamPlayer
+	if not hit_sfx:
+		hit_sfx = $HitSFXPlayer as AudioStreamPlayer
 	
 func move(new_position: Vector2i) -> void:
 	head_snake_segment.move(new_position, current_direction)
@@ -33,7 +43,7 @@ func reset() -> void:
 	print("Calling Reset")
 	if snake_segment_scene:
 		head_snake_segment = _add_snake_segment() # Keep a reference to the first segment added
-		var player_starting_position : Vector2i = Vector2i(int(float(GridUtility.NUM_COLUMNS) / 2), int(float(GridUtility.NUM_ROWS) / 2))
+		var player_starting_position: Vector2i = Vector2i(int(float(GridUtility.NUM_COLUMNS) / 2), int(float(GridUtility.NUM_ROWS) / 2))
 		print(player_starting_position)
 		head_snake_segment.initialize_segment(player_starting_position, GridUtility.DIRECTIONS.DOWN)
 	else:
@@ -70,16 +80,21 @@ func _on_snake_segment_collision(area: Area2D) -> void:
 	if area.is_in_group("snakeSegments"):
 		print("Hit Snake Segment: " + area.name)
 		#area.queue_free()
+		hit_sfx.play()
 		_change_move_state("PausedMoveState")
 	elif area.is_in_group("obstacles"):
 		print("Hit an Obstacle: " + area.name)
 		area.queue_free()
+		hit_sfx.play()
 		_change_move_state("PausedMoveState")
 	elif area.is_in_group("foods"):
 		print("Hit a Food: " + area.name)
-		movement_interval /= speedup_factor
+		if speedup_factor != 0:
+			movement_interval /= speedup_factor
 		area.queue_free()
-		(func() -> void: _add_snake_segment()).call_deferred()
-		(func() -> void: food_eaten.emit()).call_deferred()
+		eat_sfx.play()
+		# Will be able to use new syntax in Godot 4.3 instead of using lambda function
+		(func() -> void: _add_snake_segment()).call_deferred() # call_deferred puts thees functions into a queue to be executed when it's safe
+		(func() -> void: food_eaten.emit()).call_deferred() # and in the order that they are called, so it's safe to call these two in succession
 	else:
 		print("Hit something: " + area.name)

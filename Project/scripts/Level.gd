@@ -1,7 +1,7 @@
 class_name Level
 extends Node2D
 
-@export var player_node: Node = null  # Initialize player_node to null
+@export var player_node: Player = null  # Initialize player_node to null
 
 # Obstacles
 @export var obstacle_scene: PackedScene = null
@@ -28,7 +28,7 @@ func _ready() -> void:
 	if not obstacles_node:
 		obstacles_node = $Obstacles as Node2D  # Fallback if not set in the editor
 	if not player_node:
-		player_node = $Player as Node2D  # Fallback if not set in the editor
+		player_node = $Player as Player  # Fallback if not set in the editor
 
 func reset_level() -> void:
 	# Reset the player

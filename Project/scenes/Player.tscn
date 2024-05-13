@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpa2scx4uyu2g"]
+[gd_scene load_steps=9 format=3 uid="uid://bpa2scx4uyu2g"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_wvwxf"]
 [ext_resource type="PackedScene" uid="uid://bljwdsp3a25xx" path="res://scenes/SnakeSegment.tscn" id="2_g6m7x"]
@@ -6,15 +6,18 @@
 [ext_resource type="Script" path="res://scripts/state/IdleMoveState.gd" id="4_oq18h"]
 [ext_resource type="Script" path="res://scripts/state/MovingMoveState.gd" id="5_bi073"]
 [ext_resource type="Script" path="res://scripts/state/PausedMoveState.gd" id="6_7dcsv"]
+[ext_resource type="AudioStream" uid="uid://cbnup1qye3f7l" path="res://audio/sfx/GetItem.wav" id="7_v6h2n"]
+[ext_resource type="AudioStream" uid="uid://dk4xl1g6pt88k" path="res://audio/sfx/GetHit.wav" id="8_wf45k"]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("snake_segments_node", "move_state_machine")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("snake_segments_node", "move_state_machine", "eat_sfx", "hit_sfx")]
 script = ExtResource("1_wvwxf")
 snake_segment_scene = ExtResource("2_g6m7x")
 snake_segments_node = NodePath("SnakeSegments")
-current_direction = null
 movement_interval = 0.3
 speedup_factor = 1.05
 move_state_machine = NodePath("MoveStateMachine")
+eat_sfx = NodePath("EatSFXPlayer")
+hit_sfx = NodePath("HitSFXPlayer")
 
 [node name="SnakeSegments" type="Node2D" parent="."]
 
@@ -32,3 +35,11 @@ player = NodePath("../..")
 
 [node name="PausedMoveState" type="Node" parent="MoveStateMachine"]
 script = ExtResource("6_7dcsv")
+
+[node name="EatSFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_v6h2n")
+bus = &"SFX"
+
+[node name="HitSFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_wf45k")
+bus = &"SFX"
