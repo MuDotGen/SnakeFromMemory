@@ -11,10 +11,17 @@ extends Node2D
 @export var food_scene: PackedScene = null
 @export var foods_node: Node = null
 
+# Score
+@export var score_label: Label = null
+
 const X_OPEN_RANGE: Vector2i = Vector2i(1, GridUtility.NUM_COLUMNS - 2)
 const Y_OPEN_RANGE: Vector2i = Vector2i(1, GridUtility.NUM_ROWS - 3)
 
 var food_spawn_timer: Timer
+var score: int = 0 :
+	set(value):
+		score = value
+		_update_score()
 
 func _ready() -> void:
 	food_spawn_timer = Timer.new()
@@ -29,10 +36,14 @@ func _ready() -> void:
 		obstacles_node = $Obstacles as Node2D  # Fallback if not set in the editor
 	if not player_node:
 		player_node = $Player as Player  # Fallback if not set in the editor
+	if not score_label:
+		score_label = $ScoreLabel as Label  # Fallback if not set in the editor
 
 func reset_level() -> void:
 	# Reset the player
 	print("Resetting Level")
+	score = 0
+	
 	if obstacles_node:
 		_setup_boundary()
 		
@@ -78,8 +89,13 @@ func _spawn_food_random_position() -> void:
 	_instantiate_food(_get_random_position())
 		
 func _on_food_eaten() -> void:
+	score += 1
 	food_spawn_timer.wait_time = 1
 	#food_spawn_timer.timeout.connect(_spawn_food_random_position)
 	food_spawn_timer.start()
 	await food_spawn_timer.timeout
 	_spawn_food_random_position()
+
+func _update_score() -> void:
+	if score_label:
+		score_label.text = "Score: " + str(score)
