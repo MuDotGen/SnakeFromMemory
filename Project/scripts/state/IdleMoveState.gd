@@ -3,7 +3,7 @@ extends State
 
 @export var player: Player
 
-func Enter():
+func Enter() -> void:
 	print("Transitioned to IdleMoveState")
 
 # When the player is idle, they should not be moving
@@ -23,6 +23,6 @@ func Handle_input(event: InputEvent) -> void:
 		# Move right
 		_change_direction(GridUtility.DIRECTIONS.RIGHT)
 	
-func _change_direction(direction: Vector2i):
+func _change_direction(direction: Vector2i) -> void:
 	player.current_direction = direction
 	transitioned.emit("MovingMoveState")

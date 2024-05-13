@@ -6,7 +6,7 @@ var snake: SnakeSegment
 
 var movement_clock: Timer
 
-func _ready():
+func _ready() -> void:
 	snake = player.head_snake_segment
 	movement_clock = Timer.new()
 	add_child(movement_clock)
@@ -14,13 +14,13 @@ func _ready():
 	movement_clock.autostart = false
 	movement_clock.timeout.connect(_on_movement_tick_timeout)
 
-func Enter():
+func Enter() -> void:
 	print("Transitioned to Moving State")
 	_move() # Move immediately first time
 	_tick_movement_clock()
 	pass
 	
-func Exit():
+func Exit() -> void:
 	print("Exiting MovingMoveState")
 	movement_clock.stop()
 
@@ -38,22 +38,22 @@ func Handle_input(event: InputEvent) -> void:
 		# Move right
 		_change_direction(GridUtility.DIRECTIONS.RIGHT)
 
-func _change_direction(direction: Vector2i):
+func _change_direction(direction: Vector2i) -> void:
 	player.current_direction = direction
 	transitioned.emit("MovingMoveState")
 
-func _move():
+func _move() -> void:
 	var new_position: Vector2i = player.get_snake_grid_position() + player.current_direction
 	# Check the new position is within a valid grid position
 	new_position.x = clamp(new_position.x, 0, GridUtility.NUM_COLUMNS - 1)
 	new_position.y = clamp(new_position.y, 0, GridUtility.NUM_ROWS - 1)
 	player.move(new_position)
 	
-func _tick_movement_clock():
+func _tick_movement_clock() -> void:
 	movement_clock.stop()
 	movement_clock.wait_time = player.movement_interval
 	movement_clock.start()
 	
-func _on_movement_tick_timeout():
+func _on_movement_tick_timeout() -> void:
 	_move() # Move
 	_tick_movement_clock() # And start another tick

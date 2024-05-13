@@ -19,7 +19,7 @@ var head_snake_segment: SnakeSegment
 # Player MoveStateMachine
 @export var move_state_machine: Node
 	
-func move(new_position: Vector2i):
+func move(new_position: Vector2i) -> void:
 	head_snake_segment.move(new_position, current_direction)
 	
 func get_snake_grid_position() -> Vector2i:
@@ -29,11 +29,11 @@ func get_snake_grid_position() -> Vector2i:
 		push_error("head_snake_segment not ready in the Player scene")
 		return Vector2i.ZERO
 
-func reset():
+func reset() -> void:
 	print("Calling Reset")
 	if snake_segment_scene:
 		head_snake_segment = _add_snake_segment() # Keep a reference to the first segment added
-		var player_starting_position = Vector2i(int(float(GridUtility.NUM_COLUMNS) / 2), int(float(GridUtility.NUM_ROWS) / 2))
+		var player_starting_position : Vector2i = Vector2i(int(float(GridUtility.NUM_COLUMNS) / 2), int(float(GridUtility.NUM_ROWS) / 2))
 		print(player_starting_position)
 		head_snake_segment.initialize_segment(player_starting_position, GridUtility.DIRECTIONS.DOWN)
 	else:
@@ -41,7 +41,7 @@ func reset():
 	
 	_change_move_state("IdleMoveState")
 	
-func _change_move_state(state_name: StringName):
+func _change_move_state(state_name: StringName) -> void:
 	if move_state_machine:
 		move_state_machine.on_child_transitioned(state_name)
 	else:
@@ -65,7 +65,7 @@ func _add_snake_segment() -> SnakeSegment:
 	# Optionally return a reference to the new segment
 	return new_segment
 
-func _on_snake_segment_collision(area: Area2D):
+func _on_snake_segment_collision(area: Area2D) -> void:
 	# Let a manager know hit something and what it is
 	if area.is_in_group("snakeSegments"):
 		print("Hit Snake Segment: " + area.name)
@@ -79,7 +79,7 @@ func _on_snake_segment_collision(area: Area2D):
 		print("Hit a Food: " + area.name)
 		movement_interval /= speedup_factor
 		area.queue_free()
-		(func(): _add_snake_segment()).call_deferred()
-		(func(): food_eaten.emit()).call_deferred()
+		(func() -> void: _add_snake_segment()).call_deferred()
+		(func() -> void: food_eaten.emit()).call_deferred()
 	else:
 		print("Hit something: " + area.name)

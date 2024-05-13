@@ -3,5 +3,5 @@ extends Node
 
 var level_number: int = 1
 
-func _ready():
+func _ready() -> void:
 	pass

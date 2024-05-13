@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://df52pv4sgngd6"]
+[gd_scene load_steps=3 format=3 uid="uid://df52pv4sgngd6"]
 
 [ext_resource type="PackedScene" uid="uid://mot4qbaqw5s8" path="res://scenes/Level.tscn" id="1_7ujjk"]
+[ext_resource type="AudioStream" uid="uid://cyq2wtqd2sjx6" path="res://audio/music/Gameplay1.wav" id="2_hvn6t"]
 
 [node name="GameManager" type="Node"]
 
 [node name="Level" parent="." instance=ExtResource("1_7ujjk")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_hvn6t")
+autoplay = true
+bus = &"Music"

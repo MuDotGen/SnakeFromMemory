@@ -7,14 +7,14 @@ var last_grid_position: Vector2i
 var current_direction: Vector2i
 var last_direction: Vector2i
 
-func _ready():
+func _ready() -> void:
 	print("New Snake Segment Initialized")
 
-func initialize_segment(pos: Vector2i, dir: Vector2i):
+func initialize_segment(pos: Vector2i, dir: Vector2i) -> void:
 	grid_position = pos
 	current_direction = dir
 
-func add_segment(new_segment: SnakeSegment):
+func add_segment(new_segment: SnakeSegment) -> void:
 	# Recursively check if this is the last segment in the snake
 	if tail_segment:
 		# If it has a tail, have the next segment attempt to add it
@@ -26,7 +26,7 @@ func add_segment(new_segment: SnakeSegment):
 		new_segment.initialize_segment(last_grid_position, last_direction)
 		tail_segment = new_segment
 
-func move(new_grid_position: Vector2i, new_direction: Vector2i):
+func move(new_grid_position: Vector2i, new_direction: Vector2i) -> void:
 	# Recursively move each tail to the position of the segment in front of it
 	
 	# Store the current_grid_position as the last one before updating position

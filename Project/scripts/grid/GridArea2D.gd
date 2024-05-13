@@ -6,5 +6,5 @@ extends Area2D
 		grid_position = pos
 		position = GridUtility.grid_to_world(grid_position)
 
-func _ready():
+func _ready() -> void:
 	position = GridUtility.grid_to_world(grid_position)

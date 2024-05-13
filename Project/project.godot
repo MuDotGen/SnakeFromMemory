@@ -15,6 +15,11 @@ run/main_scene="res://scenes/World.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[debug]
+
+gdscript/warnings/unused_variable=2
+gdscript/warnings/untyped_declaration=2
+
 [display]
 
 window/size/viewport_width=512
